@@ -1,0 +1,94 @@
+<apex:page id="BB_LeadSubscription" standardController="Lead" extensions="BB_LeadSubscriptionController" lightningStylesheets="true">
+
+    <!-- begin apex form -->
+    <apex:form id="LeadSubscriptionForm">
+
+        <!-- lead header information -->
+        <apex:sectionheader title="Lead" subtitle="{!if(Lead.Id==null,'New Lead',Lead.Name)}"></apex:sectionheader>
+
+        <!-- message displayed if API key not entered-->
+        <apex:pageMessage severity="warning" rendered="{!ISBLANK($Setup.BankingBridge_API_Settings__c.API_Key__c)}">
+            Warning: BankingBridge API Key not configured. Please go to <a href="/lightning/n/BankingBridge_API_Configuration">Banking Bridge API Configuration</a>  to enter an API Key and test your connection before entering subscription information.
+        </apex:pageMessage>
+
+        <!-- apex messages displayed on save -->
+        <apex:pagemessages ></apex:pagemessages>
+
+        <!-- begin main subscription in pageblock displayed if API key is entered -->
+        <apex:pageblock mode="edit" id="LeadPB" title="Subscription Information"  rendered="{!!ISBLANK($Setup.BankingBridge_API_Settings__c.API_Key__c)}">
+
+            <!-- command buttons to save and go back to lead -->
+            <apex:pageblockbuttons >
+                <apex:commandbutton action="{!saveSubscription}" value="Save to BankingBridge API" rendered="{!ISBLANK(Lead.BB_Subscription_ID__c)}"></apex:commandbutton>
+                <apex:commandbutton action="{!cancel}" value="Back"></apex:commandbutton>
+            </apex:pageblockbuttons>
+
+            <!-- begin subscription information -->
+            <apex:pageblocksection id="SubscriptionPBS" title="Subscription">
+
+                <!-- NMLS and LOID displayed if lead has no subscription id -->
+                <apex:inputfield value="{!Lead.Email}" rendered="{!ISBLANK(Lead.BB_Subscription_ID__c)}" required="true"></apex:inputfield>
+                <apex:outputtext value="" rendered="{!ISBLANK(Lead.BB_Subscription_ID__c)}"></apex:outputtext>
+
+                <apex:inputfield value="{!Lead.BB_NMLS__c}" rendered="{!ISBLANK(Lead.BB_Subscription_ID__c)}"></apex:inputfield>
+                <apex:inputfield value="{!Lead.BB_LOID__c}" rendered="{!ISBLANK(Lead.BB_Subscription_ID__c)}"></apex:inputfield>
+
+                <!-- displays dashboard link and subscription id if lead already sent to bankingbridge api -->
+                <apex:outputfield value="{!Lead.BB_Dashboard_Link__c}" rendered="{!!ISBLANK(Lead.BB_Subscription_ID__c)}"></apex:outputfield>
+                <apex:outputfield value="{!Lead.BB_Subscription_ID__c}" rendered="{!!ISBLANK(Lead.BB_Subscription_ID__c)}"></apex:outputfield>
+
+            </apex:pageblocksection>
+            <!-- end subscription information -->
+
+            <!-- begin quote information entry -->
+            <apex:pageblocksection id="QuoteInfoPBS" title="Quote Info" rendered="{!ISBLANK(Lead.BB_Subscription_ID__c)}">
+                <apex:inputfield required="true" value="{!Lead.BB_Property_Value__c}"></apex:inputfield>
+                <apex:inputfield required="true" value="{!Lead.BB_Loan_Amount__c}"></apex:inputfield>
+
+                <apex:inputfield value="{!Lead.BB_Loan_Type__c}">
+                    <apex:actionSupport rerender="QuoteInfoPBS" event="onchange"/>
+                </apex:inputfield>
+                <apex:inputfield value="{!Lead.BB_Loan_Purpose__c}"></apex:inputfield>
+
+                <apex:inputfield value="{!Lead.BB_Residency_Type__c}"></apex:inputfield>
+                <apex:inputfield value="{!Lead.BB_Military_Eligible__c}"></apex:inputfield>
+
+                <apex:inputfield value="{!Lead.BB_Cash_Out__c}"></apex:inputfield>
+                <apex:inputfield required="true" value="{!Lead.BB_Credit_Score__c}"></apex:inputfield>
+
+                <apex:inputfield value="{!Lead.BB_Debt_to_Income__c}"></apex:inputfield>
+                <apex:inputfield value="{!Lead.BB_Property_Type__c}"></apex:inputfield>
+
+                <apex:inputfield value="{!Lead.BB_Lock_Period__c}"></apex:inputfield>
+                <apex:inputfield value="{!Lead.BB_Loan_Term__c}"></apex:inputfield>
+
+                <!-- arm term displayed only if loan type = arm -->
+                <apex:inputfield rendered="{!Lead.BB_Loan_Type__c=='ARM'}" value="{!Lead.BB_ARM_Term__c}"></apex:inputfield>
+
+            </apex:pageblocksection>
+            <!-- end quote information entry -->
+
+            <!-- begin property location information entry -->
+            <apex:pageblocksection id="PropertLocationPBS" title="Property Location" rendered="{!ISBLANK(Lead.BB_Subscription_ID__c)}">
+                <apex:inputfield value="{!Lead.BB_Property_Street_Address__c}"></apex:inputfield>
+                <apex:outputtext value=""></apex:outputtext>
+
+                <apex:inputfield value="{!Lead.BB_Property_City__c}"></apex:inputfield>
+                <apex:outputtext value=""></apex:outputtext>
+
+                <apex:inputfield value="{!Lead.BB_Property_State__c}"></apex:inputfield>
+                <apex:outputtext value=""></apex:outputtext>
+
+                <apex:inputfield required="true" value="{!Lead.BB_Property_Zipcode__c}"></apex:inputfield>
+                <apex:outputtext value=""></apex:outputtext>
+
+            </apex:pageblocksection>
+            <!-- end property location information entry -->
+
+        </apex:pageblock>
+        <!-- end main subscription in pageblock displayed if API key is entered -->
+
+    </apex:form>
+    <!-- end apex form -->
+
+</apex:page>

@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>BB_ARM_Term__c</fullName>
+        <description>ARM Term sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ARM term in years. Requires loan_type: arm</inlineHelpText>
+        <label>ARM Term</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BB_Cash_Out__c</fullName>
+        <description>Cash Out sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Cash out amount. Requires loan_purpose: refinance</inlineHelpText>
+        <label>Cash Out</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>BB_Credit_Score__c</fullName>
+        <description>Credit Score sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Estimated credit score of borrower</inlineHelpText>
+        <label>Credit Score</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BB_Dashboard_Link__c</fullName>
+        <description>Link to BankingBridge dashboard</description>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(BB_Subscription_URL__c,IF(ISBLANK(BB_Subscription_URL__c),&apos;Not Subscribed&apos;,&apos;Click here&apos;))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Link to BankingBridge dashboard</inlineHelpText>
+        <label>Dashboard Link</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BB_Debt_to_Income__c</fullName>
+        <description>Debt to Income sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Percent of monthly obligations of monthly income</inlineHelpText>
+        <label>Debt to Income</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>BB_Down_Payment__c</fullName>
+        <description>Down Payment sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Down Payment sent to BankingBridge API</inlineHelpText>
+        <label>Down Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>BB_LOID__c</fullName>
+        <description>LOID sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LOID sent to BankingBridge API</inlineHelpText>
+        <label>LOID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BB_Last_API_Sync_Status__c</fullName>
+        <description>Status of the last API Sync</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Status of the last API Sync</inlineHelpText>
+        <label>Last API Sync Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Last_API_Sync__c</fullName>
+        <description>Date time of the last sync to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date time of the last sync to BankingBridge API</inlineHelpText>
+        <label>Last API Sync</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>BB_List_Price__c</fullName>
+        <description>List Price sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>List Price sent to BankingBridge API</inlineHelpText>
+        <label>List Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>BB_Loan_Amount__c</fullName>
+        <description>Loan Amount sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Loan amount or loan balance (in the case of a refinance)</inlineHelpText>
+        <label>Loan Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>BB_Loan_Purpose__c</fullName>
+        <description>Loan Purpose sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Purpose of loan</inlineHelpText>
+        <label>Loan Purpose</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>purchase</fullName>
+                    <default>false</default>
+                    <label>purchase</label>
+                </value>
+                <value>
+                    <fullName>refinance</fullName>
+                    <default>false</default>
+                    <label>refinance</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>BB_Loan_Term__c</fullName>
+        <description>Loan Term sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Loan term in months</inlineHelpText>
+        <label>Loan Term</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BB_Loan_Type__c</fullName>
+        <description>Loan Type sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Loan Type sent to BankingBridge API</inlineHelpText>
+        <label>Loan Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>conventional</fullName>
+                    <default>false</default>
+                    <label>conventional</label>
+                </value>
+                <value>
+                    <fullName>VA</fullName>
+                    <default>false</default>
+                    <label>VA</label>
+                </value>
+                <value>
+                    <fullName>FHA</fullName>
+                    <default>false</default>
+                    <label>FHA</label>
+                </value>
+                <value>
+                    <fullName>USDA</fullName>
+                    <default>false</default>
+                    <label>USDA</label>
+                </value>
+                <value>
+                    <fullName>arm</fullName>
+                    <default>false</default>
+                    <label>arm</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>BB_Lock_Period__c</fullName>
+        <description>Lock Period sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Duration of rate lock period in days</inlineHelpText>
+        <label>Lock Period</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BB_Military_Eligible__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Military Eligible sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>VA eligibility</inlineHelpText>
+        <label>Military Eligible</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BB_NMLS__c</fullName>
+        <description>NMLS sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Loan Officer NMLS</inlineHelpText>
+        <label>NMLS</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BB_Property_City__c</fullName>
+        <description>City of property</description>
+        <externalId>false</externalId>
+        <inlineHelpText>City of property</inlineHelpText>
+        <label>Property City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BB_Property_State__c</fullName>
+        <description>State of property</description>
+        <externalId>false</externalId>
+        <inlineHelpText>State of property</inlineHelpText>
+        <label>Property State</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BB_Property_Street_Address__c</fullName>
+        <description>Street address of property</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Street address of property</inlineHelpText>
+        <label>Property Street Address</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>BB_Property_Type__c</fullName>
+        <description>Property Type sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of property</inlineHelpText>
+        <label>Property Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>single_family_home</fullName>
+                    <default>false</default>
+                    <label>single_family_home</label>
+                </value>
+                <value>
+                    <fullName>townhome</fullName>
+                    <default>false</default>
+                    <label>townhome</label>
+                </value>
+                <value>
+                    <fullName>condominium</fullName>
+                    <default>false</default>
+                    <label>condominium</label>
+                </value>
+                <value>
+                    <fullName>multi_tenant_home</fullName>
+                    <default>false</default>
+                    <label>multi_tenant_home</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>BB_Property_Zipcode__c</fullName>
+        <description>Zipcode of property</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Zipcode of property</inlineHelpText>
+        <label>Property Zipcode</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BB_Residency_Type__c</fullName>
+        <description>Residency Type sent to BankingBridge API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>aka Occupancy</inlineHelpText>
+        <label>Residency Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>primary_home</fullName>
+                    <default>false</default>
+                    <label>primary_home</label>
+                </value>
+                <value>
+                    <fullName>second_home</fullName>
+                    <default>false</default>
+                    <label>second_home</label>
+                </value>
+                <value>
+                    <fullName>rental_home</fullName>
+                    <default>false</default>
+                    <label>rental_home</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>BB_Subscription_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If active is set to false, we will not send out emails</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If active is set to false, we will not send out emails</inlineHelpText>
+        <label>Subscription Active</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BB_Subscription_ID__c</fullName>
+        <description>ID of BankingBridge subscription</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ID of BankingBridge subscription</inlineHelpText>
+        <label>Subscription ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BB_Subscription_URL__c</fullName>
+        <description>URL to access subscription in BankingBridge</description>
+        <externalId>false</externalId>
+        <inlineHelpText>URL to access subscription in BankingBridge</inlineHelpText>
+        <label>Subscription URL</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Url</type>
+    </fields>
+</CustomObject>

@@ -1,0 +1,36 @@
+<apex:page id="BB_BankingBridgeAPI_Configuration" controller="BB_BankingBridgeAPI_ConfigController" action="{!createBankingBridgeAPISettings}" lightningStylesheets="true">
+    <!-- begin apex form -->
+    <apex:form>
+        <!-- page messages displayed on save or test connection -->
+        <apex:pageMessages id="pageMessages" />
+        <apex:pageMessage id="pageMessage" title="Configuring your BankingBridge Settings" severity="info" detail="Please enter the BankingBridge API provided to you and click save. Make sure to click Test Connection after saving to validate a successful connection can be made. Please enter your Brand ID to configure Lead Status to be sent to the BankingBridge API." />
+        <!-- begin pageblock for api key -->
+        <apex:pageBlock id="APISettings" >
+
+            <!-- api key entry saved to bankingbridge_api_settings__c.api_key__c -->
+            <apex:outputLabel  title="API Key " value="API Key" for="APIKey"/>
+            <apex:inputText style="width:30%" id="APIKey" maxLength="255" value="{!bankingBridgeAPISettings.API_Key__c}"></apex:inputText>
+
+            <!-- button to save api key -->
+            <apex:commandButton value="Save" action="{!saveAPIKey}" reRender="pageMessages"></apex:commandButton>
+
+            <!-- button to test api connection -->
+            <apex:commandButton value="Test Connection" action="{!testConnection}" reRender="pageMessages"></apex:commandButton>
+
+            <br/>
+            <br/>
+
+            <!-- brand id entry saved to bankingbridge_api_settings__c.brand_id__c -->
+            <apex:outputLabel title="Brand ID" value="Brand ID" for="BrandID"/>
+            <apex:inputText style="width:30%" id="BrandID" maxLength="100" value="{!bankingBridgeAPISettings.Brand_ID__c}"></apex:inputText>
+
+            <!-- button to save brand id-->
+            <apex:commandButton value="Save" action="{!saveBrandID}" reRender="pageMessages"></apex:commandButton>
+
+        </apex:pageBlock>
+        <!-- end pageblock for api key -->
+
+    </apex:form>
+    <!-- end apex form -->
+
+</apex:page>
